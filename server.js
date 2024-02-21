@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const helmet = require('helmet');
-const nodemon = require('nodemon');
+const session = require('express-session');
 
 dotenv.config();
 
@@ -15,6 +15,15 @@ app.use(helmet());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+// Create a session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  }),
+);
 app.get('/', (_req, _res) => {
   return _res.status(200).send({ message: 'Hello World bla bla bla' });
 });
