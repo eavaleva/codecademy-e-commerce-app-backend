@@ -12,7 +12,7 @@ module.exports = class CartItemModel {
       // Generate SQL statement - using helper for dynamic parameter injection
       const statement = pgp.helpers.insert(data, null, 'cartItems') + 'RETURNING *';
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement);
 
       if (result.rows?.length) {
@@ -37,7 +37,7 @@ module.exports = class CartItemModel {
       const condition = pgp.as.format('WHERE id = ${id} RETURNING *', { id });
       const statement = pgp.helpers.update(data, null, 'cartItems') + condition;
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement);
 
       if (result.rows?.length) {
@@ -67,7 +67,7 @@ module.exports = class CartItemModel {
                          WHERE "cartId" = $1`;
       const values = [cartId];
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {
@@ -94,7 +94,7 @@ module.exports = class CartItemModel {
                          RETURNING *`;
       const values = [id];
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {
