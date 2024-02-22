@@ -1,12 +1,14 @@
 const passportLoader = require('./passport');
-const routLoader = require('./routes');
+const routeLoader = require('../routes');
+const swaggerLoader = require('./swagger');
 
 module.exports = async (app) => {
   const passport = passportLoader(app);
-  routLoader(app, passport);
+  routeLoader(app, passport);
+  swaggerLoader(app);
 
   app.use((err, req, res, next) => {
-    res.status(500).send(err);
-    return res.status(status).send(err.message);
+    const { message, status } = err;
+    return res.status(status).send({ message });
   });
 };
