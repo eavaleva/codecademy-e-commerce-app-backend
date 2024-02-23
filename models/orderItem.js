@@ -1,6 +1,6 @@
-const db = require('../db');
 const moment = require('moment');
 const pgp = require('pg-promise')({ capSQL: true });
+const db = require('../db');
 
 module.exports = class OrderItemModel {
   constructor(data = {}) {
@@ -22,9 +22,9 @@ module.exports = class OrderItemModel {
   static async create(data) {
     try {
       // Generate SQL statement - using helper for dynamic parameter injection
-      const statement = pgp.helpers.insert(data, null, 'orderItems') + 'RETURNING *';
+      const statement = `${pgp.helpers.insert(data, null, 'orderItems')}RETURNING *`;
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement);
 
       if (result.rows?.length) {
@@ -54,7 +54,7 @@ module.exports = class OrderItemModel {
                          WHERE "orderId" = $1`;
       const values = [orderId];
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {

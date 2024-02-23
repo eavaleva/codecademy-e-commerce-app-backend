@@ -1,6 +1,6 @@
-'use strict';
+// Code to connect to the database
 const { Pool } = require('pg');
-const { DB } = require('./config');
+const { DB } = require('../config');
 
 const pool = new Pool({
   user: DB.PGUSER,
@@ -9,3 +9,6 @@ const pool = new Pool({
   password: DB.PGPASSWORD,
   port: DB.PGPORT,
 });
+module.exports = {
+  query: (text, params) => pool.query(text, params),
+};

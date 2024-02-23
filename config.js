@@ -1,17 +1,11 @@
 module.exports = {
-  PORT: process.env.SERVER_PORT || 3000,
+  PORT: process.env.SERVER_PORT,
   DB: {
-    PGHOST: process.env.PGHOST || 'localhost',
-    PGUSER: process.env.PGUSER || 'postgres',
-    PGDATABASE: process.env.PGDATABASE || 'postgres',
-    PGPASSWORD: process.env.PGPASSWORD || 'postgres',
-    PGPORT: process.env.PGPORT || 5432,
+    PGHOST: process.env.PGHOST,
+    PGUSER: process.env.PGUSER,
+    PGDATABASE: process.env.PGDATABASE,
+    PGPASSWORD: process.env.PGPASSWORD,
+    PGPORT: process.env.PGPORT,
   },
-  JWT: {
-    SESSION_SECRET: process.env.JWT_SECRET || 'secret',
-  },
+  SESSION_SECRET: process.env.SESSION_SECRET,
 };
-// Path: index.js
-// Compare this snippet from node_modules/express/index.js:
-// /*!
-//  * express

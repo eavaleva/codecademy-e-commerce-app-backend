@@ -1,5 +1,5 @@
-const db = require('../db');
 const pgp = require('pg-promise')({ capSQL: true });
+const db = require('../db');
 
 module.exports = class CartItemModel {
   /**
@@ -10,7 +10,7 @@ module.exports = class CartItemModel {
   static async create(data) {
     try {
       // Generate SQL statement - using helper for dynamic parameter injection
-      const statement = pgp.helpers.insert(data, null, 'cartItems') + 'RETURNING *';
+      const statement = `${pgp.helpers.insert(data, null, 'cartItems')}RETURNING *`;
 
       // Execute SQL statement
       const result = await db.query(statement);
@@ -34,7 +34,8 @@ module.exports = class CartItemModel {
   static async update(id, data) {
     try {
       // Generate SQL statement - using helper for dynamic parameter injection
-      const condition = pgp.as.format('WHERE id = ${id} RETURNING *', { id });
+      // eslint-disable-next-line no-template-curly-in-string
+      const condition = `WHERE id = ${pgp.as.format('${id} RETURNING *', { id })}`;
       const statement = pgp.helpers.update(data, null, 'cartItems') + condition;
 
       // Execute SQL statement

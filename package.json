@@ -17,6 +17,7 @@
         "express-session": "^1.18.0",
         "fs": "^0.0.1-security",
         "helmet": "^7.1.0",
+        "http-errors": "^2.0.0",
         "install-peerdeps": "^3.0.3",
         "js-yaml": "^4.1.0",
         "moment": "^2.30.1",
@@ -26,6 +27,7 @@
         "path": "^0.12.7",
         "pg": "^8.11.3",
         "pg-promise": "^11.5.4",
+        "stripe": "^14.18.0",
         "swagger-ui-express": "^5.0.0"
     },
     "engines": {

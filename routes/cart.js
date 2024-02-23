@@ -1,7 +1,7 @@
 const express = require('express');
+
 const router = express.Router();
 const CartService = require('../services/CartService');
-const { nextTick } = require('process');
 
 const CartServiceInstance = new CartService();
 
@@ -41,6 +41,7 @@ module.exports = (app) => {
     }
   });
 
+  // eslint-disable-next-line max-len
   // Add an item to the cart for the user and return the result with the items in the cart after the update
   router.post('/mine/items', async (req, res, next) => {
     try {
@@ -64,6 +65,7 @@ module.exports = (app) => {
       next(err);
     }
   });
+  // eslint-disable-next-line max-len
   // Delete the item from the cart for the user and return the result with the items in the cart after the removal
   router.delete('/mine/items/:id', async (req, res, next) => {
     try {

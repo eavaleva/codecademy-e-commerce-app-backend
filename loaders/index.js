@@ -7,7 +7,7 @@ module.exports = async (app) => {
   routeLoader(app, passport);
   swaggerLoader(app);
 
-  app.use((err, req, res, next) => {
+  app.use((err, req, res) => {
     const { message, status } = err;
     return res.status(status).send({ message });
   });

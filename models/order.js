@@ -1,6 +1,6 @@
-const db = require('../db');
 const moment = require('moment');
 const pgp = require('pg-promise')({ capSQL: true });
+const db = require('../db');
 const OrderItem = require('./orderItem');
 
 module.exports = class OrderModel {
@@ -26,9 +26,9 @@ module.exports = class OrderModel {
       const { items, ...order } = this;
 
       // Generate SQL statement - using helper for dynamic parameter injection
-      const statement = pgp.helpers.insert(order, null, 'orders') + ' RETURNING *';
+      const statement = `${pgp.helpers.insert(order, null, 'orders')} RETURNING *`;
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement);
 
       if (result.rows?.length) {
@@ -53,10 +53,11 @@ module.exports = class OrderModel {
   async update(data) {
     try {
       // Generate SQL statement - using helper for dynamic parameter injection
+      // eslint-disable-next-line no-template-curly-in-string
       const condition = pgp.as.format('WHERE id = ${id} RETURNING *', { id: this.id });
       const statement = pgp.helpers.update(data, null, 'orders') + condition;
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement);
 
       if (result.rows?.length) {
@@ -82,7 +83,7 @@ module.exports = class OrderModel {
                          WHERE "userId" = $1`;
       const values = [userId];
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {
@@ -108,7 +109,7 @@ module.exports = class OrderModel {
                          WHERE id = $1`;
       const values = [orderId];
 
-      // Execute SQL statment
+      // Execute SQL statement
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {

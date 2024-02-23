@@ -1,8 +1,9 @@
 const express = require('express');
+
 const router = express.Router();
 const ProductService = require('../services/ProductService');
 
-const productService = new ProductService(); // Create a new instance of ProductService
+const productService = new ProductService();
 
 router.get('/', async (req, res, next) => {
   try {

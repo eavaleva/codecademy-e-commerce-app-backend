@@ -1,5 +1,8 @@
+/* eslint-disable no-useless-catch */
+/* eslint-disable class-methods-use-this */
 const createError = require('http-errors');
 const OrderModel = require('../models/order');
+
 const OrderModelInstance = new OrderModel();
 
 module.exports = class OrderService {
@@ -11,6 +14,7 @@ module.exports = class OrderService {
       throw err;
     }
   }
+
   async list(options) {
     try {
       // Load orders
