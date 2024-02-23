@@ -85,7 +85,7 @@ You can access the Swagger API documentation at `http://localhost:5000/api-docs`
 
 That's it! You've now downloaded and are running the project. Enjoy exploring the API and the codebase.
 
-### Setting up a PostgreSQL
+## Setting up a PostgreSQL
 
 #### Step 1: Install PostgreSQL
 
