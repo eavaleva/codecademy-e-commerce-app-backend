@@ -1,32 +1,28 @@
-swagger: "2.0"
+swagger: '2.0'
 
-# Path: info
 info:
-  title: "E-Commerce REST API"
-  description: "This is a portfolio project for a RESTful API for an e-commerce website. 
-  It is built using Node.js, Express.js, and MongoDB. 
+  description: 'This is a portfolio project for a RESTful API for an e-commerce website. 
+  It is built using Node.js, Express.js, and PostgeSQL. 
   It is a simple API that allows users to create, read, update, and delete products and orders. 
   It also allows users to sign up and sign in. 
-  It is a simple API that allows users to create, read, update, and delete products and orders."
-  version: "1.0.0"
+  It is a simple API that allows users to create, read, update, and delete products and orders.'
+  version: '1.0.0'
+  title: 'E-commerce REST API'
 
-# Path: schemes,host,basePath
-# FIXME: Change the host to your own host
 schemes:
-  - "http"
-host: "localhost:5000"
-basePath: "/"
+  - http
 
-# Paths 
-paths: 
+host: localhost:5000
+
+basePath: '/'
 
 paths:
   /auth/register:
     post:
-      summary: "Register a new user"
-      description: "Register a new user"
+      summary: 'Register a new user'
+      description: 'Register a new user'
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
       responses:
         200:
@@ -46,10 +42,10 @@ paths:
             items:
   /auth/login:
     post:
-      summary: "Login to a user account"
-      description: "Login to a user account"
+      summary: 'Login to a user account'
+      description: 'Login to a user account'
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
       responses:
         200:
@@ -69,10 +65,10 @@ paths:
             items:
   /users/{userId}:
     get:
-      summary: "Get user record"
-      description: "Get user record"
+      summary: 'Get user record'
+      description: 'Get user record'
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
       responses:
         200:
@@ -86,27 +82,10 @@ paths:
             type: object
             items:
     put:
-      summary: "Update user record"
-      description: "Update user record"
+      summary: 'Update user record'
+      description: 'Update user record'
       produces:
-        - "application/json"
-      parameters:
-      responses:
-        200:
-          description: 200 Success
-          schema:
-            type: object
-            items:
-        500:
-          description: 500 Internal Server Error
-          schema:
-            type: object
-            items:
-    delete:
-      summary: "Delete user record"
-      description: "Delete user record"
-      produces:
-        - "application/json"
+        - 'application/json'
       parameters:
       responses:
         200:

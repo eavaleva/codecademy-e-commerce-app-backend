@@ -1,28 +1,33 @@
 const express = require('express');
 
 const router = express.Router();
-
 const UserService = require('../services/UserService');
 
-const userService = new UserService();
+const UserServiceInstance = new UserService();
 
-router.get('/:id', async (req, res, next) => {
-  try {
-    const user = await userService.get(req.params);
-    res.status(200).json(user);
-  } catch (err) {
-    next(err);
-  }
-});
+module.exports = (app) => {
+  app.use('/users', router);
 
-router.put('/:id', async (req, res, next) => {
-  try {
-    const user = await userService.update(req.body);
-    res.status(200).json(user);
-  } catch (err) {
-    next(err);
-  }
-});
+  router.get('/:userId', async (req, res, next) => {
+    try {
+      const { userId } = req.params;
 
-module.exports = router;
-// Path: routes/index.js
+      const response = await UserServiceInstance.get({ id: userId });
+      res.status(200).send(response);
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  router.put('/:userId', async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+      const data = req.body;
+
+      const response = await UserServiceInstance.update({ id: userId, ...data });
+      res.status(200).send(response);
+    } catch (err) {
+      next(err);
+    }
+  });
+};

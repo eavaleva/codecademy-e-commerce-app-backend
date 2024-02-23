@@ -1,14 +1,12 @@
 const swaggerUi = require('swagger-ui-express');
-
 const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
 
-// Load via YAML.safeLoad to avoid unsafe type errors with special
-// characters during parsing of the YAML file to JSON
-const swaggerDocument = yaml.load(fs.readFileSync(path.resolve(__dirname, './swagger.yml'), 'utf8'));
+// Loading via yml.safeLoad to avoid errors with special characters during processing
+const swaggerDocument = yaml.load(fs.readFileSync(path.resolve(__dirname, '../swagger.yml'), 'utf8'));
 
 module.exports = (app) => {
-  // save Swagger API documentation to /api-docs url
-  app.use('api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  // Serves Swagger API documentation to /docs url
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 };
