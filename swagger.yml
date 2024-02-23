@@ -14,8 +14,7 @@ info:
 # FIXME: Change the host to your own host
 schemes:
   - "http"
-  - "https"
-host: "localhost:4000"
+host: "localhost:5000"
 basePath: "/"
 
 # Paths 
