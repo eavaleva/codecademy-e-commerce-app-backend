@@ -8,5 +8,5 @@ const swaggerDocument = yaml.load(fs.readFileSync(path.resolve(__dirname, '../sw
 
 module.exports = (app) => {
   // Serves Swagger API documentation to /docs url
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 };
