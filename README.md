@@ -129,3 +129,5 @@ Replace your_database_name with your actual database name.
 Finally, update your application's database configuration with your new database name, username, and password. This is typically done in a config file or a .env file in your project.
 
 Please note that these instructions are quite general. Depending on your specific setup and requirements, you might need to perform additional configuration. Always refer to the official PostgreSQL documentation for the most accurate and detailed information.
+
+EA 2024
